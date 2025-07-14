@@ -1,0 +1,34 @@
+[ {
+  "id" : 1,
+  "title" : "Terminer le rapport mensuel",
+  "description" : "Finaliser et envoyer le rapport d'activité du mois",
+  "priority" : "HIGH",
+  "status" : "TODO",
+  "dueDate" : [ 2025, 7, 17 ],
+  "createdAt" : "2025-07-15T00:28:53",
+  "completedAt" : null,
+  "dueToday" : false,
+  "overdue" : false
+}, {
+  "id" : 2,
+  "title" : "Réunion équipe",
+  "description" : "Point hebdomadaire avec l'équipe de développement",
+  "priority" : "MEDIUM",
+  "status" : "IN_PROGRESS",
+  "dueDate" : [ 2025, 7, 16 ],
+  "createdAt" : "2025-07-15T00:28:53",
+  "completedAt" : null,
+  "dueToday" : false,
+  "overdue" : false
+}, {
+  "id" : 3,
+  "title" : "Formation JavaFX",
+  "description" : "Suivre le tutoriel avancé sur JavaFX et SceneBuilder",
+  "priority" : "LOW",
+  "status" : "TODO",
+  "dueDate" : [ 2025, 7, 22 ],
+  "createdAt" : "2025-07-15T00:28:53",
+  "completedAt" : null,
+  "dueToday" : false,
+  "overdue" : false
+} ]

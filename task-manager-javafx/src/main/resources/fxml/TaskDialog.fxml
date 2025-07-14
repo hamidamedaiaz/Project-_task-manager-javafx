@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanager.controller.TaskDialogController">
+    <content>
+        <VBox spacing="15.0">
+            <children>
+                <Label text="Informations de la Tâche">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Label>
+
+                <!-- Titre -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Titre *:" />
+                        <TextField fx:id="titleField" promptText="Entrez le titre de la tâche..." />
+                    </children>
+                </VBox>
+
+                <!-- Description -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Description:" />
+                        <TextArea fx:id="descriptionArea" prefRowCount="4" promptText="Entrez une description détaillée..." wrapText="true" />
+                    </children>
+                </VBox>
+
+                <!-- Ligne avec Priorité et Statut -->
+                <HBox spacing="15.0">
+                    <children>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Priorité:" />
+                                <ComboBox fx:id="priorityComboBox" maxWidth="1.7976931348623157E308" />
+                            </children>
+                        </VBox>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Statut:" />
+                                <ComboBox fx:id="statusComboBox" maxWidth="1.7976931348623157E308" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Date d'échéance -->
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Date d'échéance:" />
+                        <HBox spacing="10.0">
+                            <children>
+                                <DatePicker fx:id="dueDatePicker" HBox.hgrow="ALWAYS" />
+                                <Button fx:id="clearDateButton" mnemonicParsing="false" onAction="#handleClearDate" text="Effacer" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Informations supplémentaires (pour l'édition) -->
+                <VBox fx:id="additionalInfoBox" spacing="5.0" visible="false">
+                    <children>
+                        <Separator />
+                        <Label text="Informations supplémentaires:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <HBox spacing="15.0">
+                            <children>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Créée le:" />
+                                        <Label fx:id="createdAtLabel" />
+                                    </children>
+                                </VBox>
+                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Terminée le:" />
+                                        <Label fx:id="completedAtLabel" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Note d'aide -->
+                <Label text="* Champs obligatoires" textFill="GRAY">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="OK" />
+        <ButtonType fx:constant="CANCEL" />
+    </buttonTypes>
+</DialogPane>

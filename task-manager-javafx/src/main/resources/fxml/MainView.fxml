@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taskmanager.controller.MainController">
+    <top>
+        <!-- Menu Bar -->
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Fichier">
+                    <items>
+                        <MenuItem fx:id="newTaskMenuItem" mnemonicParsing="false" onAction="#handleNewTask" text="Nouvelle Tâche" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="importMenuItem" mnemonicParsing="false" onAction="#handleImport" text="Importer..." />
+                        <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" onAction="#handleExport" text="Exporter..." />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#handleExit" text="Quitter" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Édition">
+                    <items>
+                        <MenuItem fx:id="editTaskMenuItem" mnemonicParsing="false" onAction="#handleEditTask" text="Modifier Tâche" />
+                        <MenuItem fx:id="deleteTaskMenuItem" mnemonicParsing="false" onAction="#handleDeleteTask" text="Supprimer Tâche" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="clearAllMenuItem" mnemonicParsing="false" onAction="#handleClearAll" text="Effacer Tout" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Affichage">
+                    <items>
+                        <MenuItem fx:id="showAllMenuItem" mnemonicParsing="false" onAction="#handleShowAll" text="Toutes les Tâches" />
+                        <MenuItem fx:id="showTodoMenuItem" mnemonicParsing="false" onAction="#handleShowTodo" text="À Faire" />
+                        <MenuItem fx:id="showInProgressMenuItem" mnemonicParsing="false" onAction="#handleShowInProgress" text="En Cours" />
+                        <MenuItem fx:id="showCompletedMenuItem" mnemonicParsing="false" onAction="#handleShowCompleted" text="Terminées" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="showOverdueMenuItem" mnemonicParsing="false" onAction="#handleShowOverdue" text="En Retard" />
+                        <MenuItem fx:id="showTodayMenuItem" mnemonicParsing="false" onAction="#handleShowToday" text="Aujourd'hui" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Aide">
+                    <items>
+                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#handleAbout" text="À Propos" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.75" prefHeight="600.0" prefWidth="1000.0">
+            <items>
+                <!-- Zone principale avec la liste des tâches -->
+                <VBox spacing="10.0">
+                    <children>
+                        <!-- Barre d'outils -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleNewTask" text="Ajouter" />
+                                <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditTask" text="Modifier" />
+                                <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteTask" text="Supprimer" />
+                                <Separator orientation="VERTICAL" />
+                                <TextField fx:id="searchField" promptText="Rechercher..." />
+                                <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" text="Chercher" />
+                                <Separator orientation="VERTICAL" />
+                                <Label text="Trier par:" />
+                                <ComboBox fx:id="sortComboBox" onAction="#handleSort" prefWidth="120.0" />
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </HBox>
+
+                        <!-- Filtres rapides -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <ToggleButton fx:id="allFilterButton" mnemonicParsing="false" onAction="#handleShowAll" selected="true" text="Toutes" />
+                                <ToggleButton fx:id="todoFilterButton" mnemonicParsing="false" onAction="#handleShowTodo" text="À Faire" />
+                                <ToggleButton fx:id="inProgressFilterButton" mnemonicParsing="false" onAction="#handleShowInProgress" text="En Cours" />
+                                <ToggleButton fx:id="completedFilterButton" mnemonicParsing="false" onAction="#handleShowCompleted" text="Terminées" />
+                                <Separator orientation="VERTICAL" />
+                                <ToggleButton fx:id="overdueFilterButton" mnemonicParsing="false" onAction="#handleShowOverdue" text="En Retard" />
+                                <ToggleButton fx:id="todayFilterButton" mnemonicParsing="false" onAction="#handleShowToday" text="Aujourd'hui" />
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </HBox>
+
+                        <!-- Liste des tâches -->
+                        <TableView fx:id="taskTableView" prefHeight="400.0" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Statut" />
+                                <TableColumn fx:id="titleColumn" prefWidth="200.0" text="Titre" />
+                                <TableColumn fx:id="priorityColumn" prefWidth="100.0" text="Priorité" />
+                                <TableColumn fx:id="dueDateColumn" prefWidth="120.0" text="Échéance" />
+                                <TableColumn fx:id="createdColumn" prefWidth="120.0" text="Créée le" />
+                            </columns>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+
+                <!-- Panneau latéral pour les détails -->
+                <VBox spacing="10.0">
+                    <children>
+                        <Label text="Détails de la Tâche">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+
+                        <VBox fx:id="taskDetailsPane" spacing="10.0">
+                            <children>
+                                <Label fx:id="taskTitleLabel" text="Titre:" />
+                                <TextArea fx:id="taskTitleArea" editable="false" prefRowCount="2" wrapText="true" />
+
+                                <Label fx:id="taskDescriptionLabel" text="Description:" />
+                                <TextArea fx:id="taskDescriptionArea" editable="false" prefRowCount="4" wrapText="true" />
+
+                                <Label fx:id="taskPriorityLabel" text="Priorité:" />
+                                <Label fx:id="taskPriorityValue" />
+
+                                <Label fx:id="taskStatusLabel" text="Statut:" />
+                                <Label fx:id="taskStatusValue" />
+
+                                <Label fx:id="taskDueDateLabel" text="Échéance:" />
+                                <Label fx:id="taskDueDateValue" />
+
+                                <Label fx:id="taskCreatedLabel" text="Créée le:" />
+                                <Label fx:id="taskCreatedValue" />
+
+                                <Label fx:id="taskCompletedLabel" text="Terminée le:" />
+                                <Label fx:id="taskCompletedValue" />
+
+                                <Separator />
+
+                                <!-- Actions rapides -->
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label text="Actions Rapides:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Button fx:id="markTodoButton" mnemonicParsing="false" onAction="#handleMarkAsTodo" prefWidth="150.0" text="Marquer À Faire" />
+                                        <Button fx:id="markInProgressButton" mnemonicParsing="false" onAction="#handleMarkAsInProgress" prefWidth="150.0" text="Marquer En Cours" />
+                                        <Button fx:id="markCompletedButton" mnemonicParsing="false" onAction="#handleMarkAsCompleted" prefWidth="150.0" text="Marquer Terminée" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+    <bottom>
+        <!-- Barre de statut -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <children>
+                <Label fx:id="statusLabel" text="Prêt" />
+                <Separator orientation="VERTICAL" />
+                <Label fx:id="taskCountLabel" text="Total: 0 tâches" />
+                <Label fx:id="todoCountLabel" text="À faire: 0" />
+                <Label fx:id="inProgressCountLabel" text="En cours: 0" />
+                <Label fx:id="completedCountLabel" text="Terminées: 0" />
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+            </padding>
+        </HBox>
+    </bottom>
+</BorderPane>

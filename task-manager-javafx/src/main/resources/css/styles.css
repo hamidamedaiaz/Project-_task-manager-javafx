@@ -1,0 +1,510 @@
+/* ================================
+   Gestionnaire de Tâches - Styles CSS
+   ================================ */
+
+/* Variables de couleurs */
+.root {
+    -fx-primary-color: #2196F3;
+    -fx-primary-dark: #1976D2;
+    -fx-primary-light: #BBDEFB;
+    -fx-accent-color: #FF5722;
+    -fx-success-color: #4CAF50;
+    -fx-warning-color: #FF9800;
+    -fx-error-color: #F44336;
+    -fx-background-color: #FAFAFA;
+    -fx-surface-color: #FFFFFF;
+    -fx-text-primary: #212121;
+    -fx-text-secondary: #757575;
+    -fx-divider-color: #E0E0E0;
+}
+
+/* ================================
+   Styles généraux
+   ================================ */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: -fx-background-color;
+}
+
+/* ================================
+   Menu Bar
+   ================================ */
+
+.menu-bar {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 0 0 1 0;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.menu-item:focused {
+    -fx-background-color: -fx-primary-light;
+}
+
+/* ================================
+   Buttons
+   ================================ */
+
+.button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 8 16 8 16;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.button:pressed {
+    -fx-background-color: derive(-fx-primary-dark, -10%);
+}
+
+.button:disabled {
+    -fx-background-color: #BDBDBD;
+    -fx-text-fill: #9E9E9E;
+    -fx-cursor: default;
+}
+
+/* Boutons secondaires */
+.button.secondary {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.button.secondary:hover {
+    -fx-background-color: #D5D5D5;
+}
+
+/* Boutons de danger */
+.button.danger {
+    -fx-background-color: -fx-error-color;
+}
+
+.button.danger:hover {
+    -fx-background-color: derive(-fx-error-color, -10%);
+}
+
+/* ================================
+   Toggle Buttons (Filtres)
+   ================================ */
+
+.toggle-button {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+}
+
+.toggle-button:hover {
+    -fx-background-color: #D5D5D5;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+.toggle-button:selected:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+/* ================================
+   Text Fields et Text Areas
+   ================================ */
+
+.text-field, .text-area {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 8;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 2;
+}
+
+.text-area .content {
+    -fx-background-color: -fx-surface-color;
+}
+
+/* ================================
+   ComboBox
+   ================================ */
+
+.combo-box {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.combo-box:focused {
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 2;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: -fx-text-secondary;
+}
+
+/* ================================
+   TableView
+   ================================ */
+
+.table-view {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.table-view .column-header {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 0 1 1 0;
+    -fx-padding: 8;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 4;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #FAFAFA;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -fx-primary-light;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #E3F2FD;
+}
+
+/* Styles spéciaux pour les tâches */
+.table-row-cell.overdue-task {
+    -fx-background-color: #FFEBEE;
+    -fx-border-color: -fx-error-color;
+    -fx-border-width: 0 0 0 4;
+}
+
+.table-row-cell.due-today-task {
+    -fx-background-color: #FFF3E0;
+    -fx-border-color: -fx-warning-color;
+    -fx-border-width: 0 0 0 4;
+}
+
+.table-row-cell.completed-task {
+    -fx-background-color: #E8F5E8;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-border-color: -fx-success-color;
+    -fx-border-width: 0 0 0 4;
+}
+
+.table-row-cell.completed-task .table-cell {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+/* ================================
+   Labels et Textes
+   ================================ */
+
+.label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.label.title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.label.subtitle {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.label.secondary {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.label.success {
+    -fx-text-fill: -fx-success-color;
+}
+
+.label.warning {
+    -fx-text-fill: -fx-warning-color;
+}
+
+.label.error {
+    -fx-text-fill: -fx-error-color;
+}
+
+/* ================================
+   SplitPane
+   ================================ */
+
+.split-pane {
+    -fx-background-color: -fx-background-color;
+}
+
+.split-pane-divider {
+    -fx-background-color: -fx-divider-color;
+    -fx-padding: 0 2 0 2;
+}
+
+/* ================================
+   VBox et HBox avec espacement
+   ================================ */
+
+.vbox, .hbox {
+    -fx-spacing: 10;
+}
+
+/* ================================
+   Toolbar
+   ================================ */
+
+.tool-bar {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8;
+}
+
+/* ================================
+   Status Bar
+   ================================ */
+
+.status-bar {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 4 8 4 8;
+}
+
+.status-bar .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+/* ================================
+   DatePicker
+   ================================ */
+
+.date-picker {
+    -fx-background-color: -fx-surface-color;
+    -fx-border-color: -fx-divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.date-picker:focused {
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 2;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+/* ================================
+   Dialog Panes
+   ================================ */
+
+.dialog-pane {
+    -fx-background-color: -fx-surface-color;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -fx-primary-color;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content {
+    -fx-padding: 20;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-min-width: 80;
+}
+
+/* ================================
+   Scrollbars
+   ================================ */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #F5F5F5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #BDBDBD;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #9E9E9E;
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #757575;
+}
+
+/* ================================
+   Separators
+   ================================ */
+
+.separator {
+    -fx-background-color: -fx-divider-color;
+}
+
+.separator .line {
+    -fx-background-color: -fx-divider-color;
+}
+
+/* ================================
+   Animations et transitions
+   ================================ */
+
+.button, .toggle-button, .table-row-cell {
+    -fx-transition: all 0.2s ease;
+}
+
+/* ================================
+   Focus indicators
+   ================================ */
+
+.button:focused,
+.text-field:focused,
+.text-area:focused,
+.combo-box:focused,
+.date-picker:focused,
+.toggle-button:focused {
+    -fx-effect: dropshadow(gaussian, derive(-fx-primary-color, 20%), 4, 0.2, 0, 0);
+}
+
+/* ================================
+   Responsive adjustments
+   ================================ */
+
+@media screen and (max-width: 800px) {
+    .root {
+        -fx-font-size: 12px;
+    }
+
+    .button {
+        -fx-padding: 6 12 6 12;
+    }
+
+    .toggle-button {
+        -fx-padding: 4 8 4 8;
+    }
+}
+
+/* ================================
+   Styles pour les priorités
+   ================================ */
+
+.priority-high {
+    -fx-text-fill: -fx-error-color;
+    -fx-font-weight: bold;
+}
+
+.priority-medium {
+    -fx-text-fill: -fx-warning-color;
+    -fx-font-weight: bold;
+}
+
+.priority-low {
+    -fx-text-fill: -fx-success-color;
+    -fx-font-weight: bold;
+}
+
+/* ================================
+   Styles pour les statuts
+   ================================ */
+
+.status-todo {
+    -fx-text-fill: #2196F3;
+}
+
+.status-in-progress {
+    -fx-text-fill: #FF9800;
+}
+
+.status-completed {
+    -fx-text-fill: #4CAF50;
+    -fx-strikethrough: true;
+}
+
+/* ================================
+   Utilitaires
+   ================================ */
+
+.text-bold {
+    -fx-font-weight: bold;
+}
+
+.text-italic {
+    -fx-font-style: italic;
+}
+
+.margin-top {
+    -fx-padding: 10 0 0 0;
+}
+
+.margin-bottom {
+    -fx-padding: 0 0 10 0;
+}
+
+.no-border {
+    -fx-border-width: 0;
+}
+
+.rounded {
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
